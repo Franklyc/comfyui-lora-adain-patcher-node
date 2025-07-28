@@ -1,10 +1,10 @@
 # ComfyUI LoRA adaLN Patcher Node
 
-A simple but powerful custom node for ComfyUI that patches legacy LoRA models by adding dummy `adaLN_modulation_1` weights. This solves compatibility errors when using older LoRAs (e.g., trained on SD 1.5) with newer model architectures (like PixArt-α based or updated SDXL workflows) that expect these keys to be present in the `final_layer`.
+A simple but powerful custom node for ComfyUI that patches LoRA models by adding dummy `adaLN_modulation_1` weights. This solves compatibility errors when using LoRAs with newer model architectures that expect these keys to be present in the `final_layer`.
 
 ## 🚀 The Problem It Solves
 
-Some modern U-Net architectures and updated ComfyUI workflows require weights for an **Adaptive Layer Normalization** (`adaLN`) module in the final block of the U-Net. However, many older LoRAs were trained on architectures that did not have this module.
+Some modern U-Net architectures and updated ComfyUI workflows require weights for an **Adaptive Layer Normalization** (`adaLN`) module in the final block of the U-Net. However, some LoRAs were trained on architectures that did not have this module.
 
 When you try to load such a LoRA, you might encounter a `KeyError` because the loader cannot find expected keys like:
 - `lora_unet_final_layer_adaLN_modulation_1.lora_down.weight`
