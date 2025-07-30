@@ -120,6 +120,11 @@ class LoraAdaLNPatcher:
         if len(state_dict) > original_key_count:
             # 保存文件
             try:
+                
+                # 明确确保目标目录存在，增加代码的稳健性
+                output_dir = os.path.dirname(output_path)
+                os.makedirs(output_dir, exist_ok=True)
+                
                 safetensors.torch.save_file(state_dict, output_path)
                 status = f"Success! Patched and saved to '{output_filename}'. Please REFRESH your browser to see it in the dropdown list."
                 print(status)
