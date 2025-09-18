@@ -77,7 +77,8 @@ class LoraAdaLNPatcher:
             
         # 获取 lora 所在的目录和新的文件名
         lora_dir = os.path.dirname(input_path)
-        base_name, ext = os.path.splitext(lora_name)
+        file_name = os.path.basename(lora_name)
+        base_name, ext = os.path.splitext(file_name)
         output_filename = f"{base_name}_patched{ext}"
         output_path = os.path.join(lora_dir, output_filename)
 
